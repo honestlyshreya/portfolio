@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreya Ranjan - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">SR</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#education" class="nav-link">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Shreya Ranjan</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span id="typed-text"></span>
+                    <span class="cursor">|</span>
+                </p>
+                <p class="hero-description">
+                    Enthusiastic Computer Science student passionate about web development 
+                    and solving real-world problems through technology.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="floating-card">
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="floating-card">
+                    <i class="fab fa-js-square"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a dedicated Computer Science student at Swami Vivekananda Institute of Science and Technology, 
+                        currently in my 1st year. With a strong foundation in programming and web development, 
+                        I'm passionate about creating innovative solutions and learning cutting-edge technologies.
+                    </p>
+                    <p>
+                        My journey in tech has been enriched by hands-on internships where I've developed responsive 
+                        websites, worked with APIs, and created Python applications. I believe in continuous learning 
+                        and applying my skills to make a positive impact.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>2+</h3>
+                            <p>Internships</p>
+                        </div>
+                        <div class="stat">
+                            <h3>5+</h3>
+                            <p>Projects</p>
+                        </div>
+                        <div class="stat">
+                            <h3>3+</h3>
+                            <p>Certifications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Technology</h3>
+                        <h4>Computer Science and Technology</h4>
+                        <p class="institution">Swami Vivekananda Institute of Science and Technology</p>
+                        <p class="year">2023 - Present</p>
+                        <p class="description">Currently in 1st year, 2nd semester</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Secondary (12th Grade)</h3>
+                        <p class="institution">Nirmala Women College</p>
+                        <p class="year">2023</p>
+                        <p class="description">Percentage: 64.6%</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Secondary (10th Grade)</h3>
+                        <p class="institution">Adarsh Vidya Mandir</p>
+                        <p class="year">2021</p>
+                        <p class="description">Percentage: 82%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="card-header">
+                        <i class="fas fa-code"></i>
+                        <div>
+                            <h3>Web Development Intern</h3>
+                            <p class="company">CodSoft Technologies</p>
+                            <p class="duration">August 2024 - October 2024</p>
+                        </div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Developed responsive websites using HTML, CSS, and JavaScript</li>
+                        <li>Integrated APIs for dynamic content and improved UI/UX features</li>
+                        <li>Collaborated using GitHub and presented updates to team leads weekly</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <div class="card-header">
+                        <i class="fab fa-python"></i>
+                        <div>
+                            <h3>Python Programming Intern</h3>
+                            <p class="company">TechnoHacks EduTech</p>
+                            <p class="duration">July 2023 - August 2023</p>
+                        </div>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Created basic Python scripts for data handling and automation tasks</li>
+                        <li>Gained experience with file operations, conditionals, loops, and functions</li>
+                        <li>Completed hands-on assignments and built small CLI applications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-item">
+                        <span>Python</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Java</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>C</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skill-item">
+                        <span>HTML/CSS</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>JavaScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>MySQL</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="soft-skills">
+                        <span class="soft-skill">Communication</span>
+                        <span class="soft-skill">Teamwork</span>
+                        <span class="soft-skill">Leadership</span>
+                        <span class="soft-skill">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Honors & Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python for Everybody</h3>
+                    <p>Coursera (University of Michigan)</p>
+                    <span class="year">2023</span>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development Bootcamp</h3>
+                    <p>Udemy</p>
+                    <span class="year">2023</span>
+                </div>
+                <div class="cert-card">
+                    <i class="fab fa-google"></i>
+                    <h3>Google IT Support Professional</h3>
+                    <p>Google Certificate</p>
+                    <span class="year">2023</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>shreyaranjan9431@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 82948 13136</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Ranchi, Jharkhand, India</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Shreya Ranjan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
