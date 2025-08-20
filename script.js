@@ -117,7 +117,7 @@ function animateSkillBars() {
   })
 }
 
-// Contact form handling with backend
+// Contact form handling with fallback
 const contactForm = document.getElementById("contactForm")
 const submitBtn = document.getElementById("submitBtn")
 const btnText = submitBtn.querySelector(".btn-text")
@@ -135,6 +135,19 @@ contactForm.addEventListener("submit", async (e) => {
     message: formData.get("message"),
   }
 
+  // Basic client-side validation
+  if (!data.name || !data.email || !data.message) {
+    showMessage("Please fill in all fields.", "error")
+    return
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(data.email)) {
+    showMessage("Please enter a valid email address.", "error")
+    return
+  }
+
   // Show loading state
   submitBtn.disabled = true
   btnText.style.display = "none"
@@ -142,6 +155,7 @@ contactForm.addEventListener("submit", async (e) => {
   formMessage.style.display = "none"
 
   try {
+    // Try to submit to API first
     const response = await fetch("/api/contact", {
       method: "POST",
       headers: {
@@ -150,45 +164,52 @@ contactForm.addEventListener("submit", async (e) => {
       body: JSON.stringify(data),
     })
 
-    const result = await response.json()
-
-    if (result.success) {
-      // Success message
-      formMessage.innerHTML = `
-        <div class="success-message">
-          <i class="fas fa-check-circle"></i>
-          ${result.message}
-        </div>
-      `
-      formMessage.className = "form-message success"
-      contactForm.reset()
+    if (response.ok) {
+      const result = await response.json()
+      if (result.success) {
+        showMessage(result.message, "success")
+        contactForm.reset()
+      } else {
+        throw new Error(result.error || "Server error")
+      }
     } else {
-      // Error message
-      formMessage.innerHTML = `
-        <div class="error-message">
-          <i class="fas fa-exclamation-circle"></i>
-          ${result.error || "Something went wrong. Please try again."}
-        </div>
-      `
-      formMessage.className = "form-message error"
+      throw new Error("API not available")
     }
   } catch (error) {
-    console.error("Form submission error:", error)
-    formMessage.innerHTML = `
-      <div class="error-message">
-        <i class="fas fa-exclamation-circle"></i>
-        Network error. Please check your connection and try again.
-      </div>
-    `
-    formMessage.className = "form-message error"
+    console.log("API not available, using fallback method")
+
+    // Fallback: Create mailto link
+    const subject = encodeURIComponent("Portfolio Contact Form Submission")
+    const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`)
+    const mailtoLink = `mailto:shreyaranjan9431@gmail.com?subject=${subject}&body=${body}`
+
+    // Open email client
+    window.open(mailtoLink, "_blank")
+
+    showMessage(
+      "Your email client has been opened with the message. Please send the email to complete your submission.",
+      "success",
+    )
+    contactForm.reset()
   } finally {
     // Reset button state
     submitBtn.disabled = false
     btnText.style.display = "inline-block"
     btnLoading.style.display = "none"
-    formMessage.style.display = "block"
   }
 })
+
+function showMessage(message, type) {
+  const icon = type === "success" ? "fas fa-check-circle" : "fas fa-exclamation-circle"
+  formMessage.innerHTML = `
+    <div class="${type}-message">
+      <i class="${icon}"></i>
+      ${message}
+    </div>
+  `
+  formMessage.className = `form-message ${type}`
+  formMessage.style.display = "block"
+}
 
 // Add active class to current navigation item
 window.addEventListener("scroll", () => {
