@@ -1,13 +1,8 @@
 {
-  "name": "shreya-portfolio",
-  "version": "1.0.0",
+  "name": "my-v0-project",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "mkdir -p public && cp index.html styles.css script.js public/",
-    "start": "serve public",
-    "dev": "serve ."
-  },
-  "devDependencies": {
-    "serve": "^14.2.1"
+    "build": "echo 'no build script'"
   }
 }
