@@ -117,24 +117,76 @@ function animateSkillBars() {
   })
 }
 
-// Contact form handling
+// Contact form handling with backend
 const contactForm = document.getElementById("contactForm")
-contactForm.addEventListener("submit", (e) => {
+const submitBtn = document.getElementById("submitBtn")
+const btnText = submitBtn.querySelector(".btn-text")
+const btnLoading = submitBtn.querySelector(".btn-loading")
+const formMessage = document.getElementById("form-message")
+
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault()
 
   // Get form data
   const formData = new FormData(contactForm)
-  const name = formData.get("name")
-  const email = formData.get("email")
-  const message = formData.get("message")
+  const data = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    message: formData.get("message"),
+  }
 
-  // Simple form validation
-  if (name && email && message) {
-    // Simulate form submission
-    alert("Thank you for your message! I'll get back to you soon.")
-    contactForm.reset()
-  } else {
-    alert("Please fill in all fields.")
+  // Show loading state
+  submitBtn.disabled = true
+  btnText.style.display = "none"
+  btnLoading.style.display = "inline-block"
+  formMessage.style.display = "none"
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    const result = await response.json()
+
+    if (result.success) {
+      // Success message
+      formMessage.innerHTML = `
+        <div class="success-message">
+          <i class="fas fa-check-circle"></i>
+          ${result.message}
+        </div>
+      `
+      formMessage.className = "form-message success"
+      contactForm.reset()
+    } else {
+      // Error message
+      formMessage.innerHTML = `
+        <div class="error-message">
+          <i class="fas fa-exclamation-circle"></i>
+          ${result.error || "Something went wrong. Please try again."}
+        </div>
+      `
+      formMessage.className = "form-message error"
+    }
+  } catch (error) {
+    console.error("Form submission error:", error)
+    formMessage.innerHTML = `
+      <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        Network error. Please check your connection and try again.
+      </div>
+    `
+    formMessage.className = "form-message error"
+  } finally {
+    // Reset button state
+    submitBtn.disabled = false
+    btnText.style.display = "inline-block"
+    btnLoading.style.display = "none"
+    formMessage.style.display = "block"
   }
 })
 
