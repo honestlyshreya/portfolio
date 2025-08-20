@@ -117,99 +117,26 @@ function animateSkillBars() {
   })
 }
 
-// Contact form handling with fallback
+// Contact form handling
 const contactForm = document.getElementById("contactForm")
-const submitBtn = document.getElementById("submitBtn")
-const btnText = submitBtn.querySelector(".btn-text")
-const btnLoading = submitBtn.querySelector(".btn-loading")
-const formMessage = document.getElementById("form-message")
-
-contactForm.addEventListener("submit", async (e) => {
+contactForm.addEventListener("submit", (e) => {
   e.preventDefault()
 
   // Get form data
   const formData = new FormData(contactForm)
-  const data = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-    message: formData.get("message"),
-  }
+  const name = formData.get("name")
+  const email = formData.get("email")
+  const message = formData.get("message")
 
-  // Basic client-side validation
-  if (!data.name || !data.email || !data.message) {
-    showMessage("Please fill in all fields.", "error")
-    return
-  }
-
-  // Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!emailRegex.test(data.email)) {
-    showMessage("Please enter a valid email address.", "error")
-    return
-  }
-
-  // Show loading state
-  submitBtn.disabled = true
-  btnText.style.display = "none"
-  btnLoading.style.display = "inline-block"
-  formMessage.style.display = "none"
-
-  try {
-    // Try to submit to API first
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-
-    if (response.ok) {
-      const result = await response.json()
-      if (result.success) {
-        showMessage(result.message, "success")
-        contactForm.reset()
-      } else {
-        throw new Error(result.error || "Server error")
-      }
-    } else {
-      throw new Error("API not available")
-    }
-  } catch (error) {
-    console.log("API not available, using fallback method")
-
-    // Fallback: Create mailto link
-    const subject = encodeURIComponent("Portfolio Contact Form Submission")
-    const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`)
-    const mailtoLink = `mailto:shreyaranjan9431@gmail.com?subject=${subject}&body=${body}`
-
-    // Open email client
-    window.open(mailtoLink, "_blank")
-
-    showMessage(
-      "Your email client has been opened with the message. Please send the email to complete your submission.",
-      "success",
-    )
+  // Simple form validation
+  if (name && email && message) {
+    // Simulate form submission
+    alert("Thank you for your message! I'll get back to you soon.")
     contactForm.reset()
-  } finally {
-    // Reset button state
-    submitBtn.disabled = false
-    btnText.style.display = "inline-block"
-    btnLoading.style.display = "none"
+  } else {
+    alert("Please fill in all fields.")
   }
 })
-
-function showMessage(message, type) {
-  const icon = type === "success" ? "fas fa-check-circle" : "fas fa-exclamation-circle"
-  formMessage.innerHTML = `
-    <div class="${type}-message">
-      <i class="${icon}"></i>
-      ${message}
-    </div>
-  `
-  formMessage.className = `form-message ${type}`
-  formMessage.style.display = "block"
-}
 
 // Add active class to current navigation item
 window.addEventListener("scroll", () => {
